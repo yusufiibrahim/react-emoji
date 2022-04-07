@@ -5,6 +5,7 @@ import "./App.css";
 // components
 import Navbar from "./components/Navbar/navbar.jsx";
 import Container from "./components/Container/container.jsx";
+import Empty from "./components/Empty/empty.jsx";
 
 function App() {
   const [emojisData, setEmojisData] = useState([]);
@@ -37,8 +38,8 @@ function App() {
     <>
       <Navbar />
       <Container>
-        {loading && <p>Loading ....</p>}
-        {error && <p>Oooopppsss... you got an error</p>}
+        {loading && <Empty text="Loading...." />}
+        {error && <Empty text="Error!" />}
         {emojisData.length > 0 && <p>Emojis Data sukses!</p>}
       </Container>
     </>
