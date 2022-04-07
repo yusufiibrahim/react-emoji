@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  const [emojisdata, setEmojisdata] = useState([]);
+  const [emojisData, setEmojisData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -16,7 +16,7 @@ function App() {
         const res = await axios.get(
           "https://run.mocky.io/v3/fe964130-70d0-430f-b839-e55081423c28"
         );
-        setEmojisdata(res.data);
+        setEmojisData(res.data);
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -29,13 +29,13 @@ function App() {
     fetchEmojis();
   }, []);
 
-  console.log("loading ?", loading);
-  console.log("error ?", error);
-  console.log("emojisData ?", emojisdata);
-
   return (
     <div className="App">
       <h1>Hello world!</h1>
+
+      {loading && <p>Loading ....</p>}
+      {error && <p>Oooopppsss... you got an error</p>}
+      {emojisData.length > 0 && <p>Emojis Data sukses!</p>}
     </div>
   );
 }
